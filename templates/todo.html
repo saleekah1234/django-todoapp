@@ -1,0 +1,124 @@
+
+{% load static %}
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" herf="../static/todo.css"> 
+<style>
+    body{
+    background-color: black;
+    height: 500px;
+    width:250px;
+    position: relative;
+    text-align:center;
+    margin-top: 20px;
+
+}
+#container{
+    height: 250px;
+    width:500px;
+    margin-top: 59px;
+    margin-left: 280px;
+    margin-right: 250px;
+    font-style: normal;
+    text-align:left;
+    text-decoration-color: #f0f8ff;
+    background-color:blue;
+    text-indent: 1em;
+    text-size-adjust: 6px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+
+
+
+    
+
+
+}
+#cart{
+    width:500px;
+    text-decoration-color: aliceblue;
+    height:250px;
+}
+#container a{
+    color: aliceblue;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin-left: 280px;
+    box-sizing: border-box;
+    text-align: center;
+    border-color:blue
+  }
+  input[value=Add] {
+        text-align: center;
+        margin-left: 480px;
+        block-size:60px,60px;
+        color: white;
+        font-size: 1.5em;
+        background-color:black;     
+        border-color: blue;
+    
+      
+  }
+  input[value=Delete] {
+        
+        margin-left: 250px;
+        block-size: 50 50px;
+        color:white;
+        align-items: right;
+        border-color: aliceblue;
+        background-color: blue;
+        align-self: right;
+        border-width: 0.2pt;
+
+
+  }
+h1 {
+    color: aliceblue;
+    margin-left:400px;
+    position: relative;
+    width:250px;
+    text-align: center;
+    text-emphasis: margin;
+    margin-top: 0px;
+
+}
+
+</style>
+</head>
+    <body>
+        <h1 >&nbsp;&nbsp;&nbsp;TO DO LIST</h1>
+        <div id='container'>
+           
+            <ul>
+                {% for todo_item in all_items %}
+                  <li>{{ todo_item.content }}
+                    <form action="/deleteTodo/{{todo_item.id}}/"
+                          style="display: inline;"
+                          method="post">{% csrf_token %}
+                      <input type="submit" value="Delete"/>
+                    </form>
+                  </li>
+                {% endfor %}
+              </ul>
+        </div>
+        <div id='cart'>
+            
+<form action="/addTodo/" method="post">{% csrf_token %}
+    <input type="text" name="content"/>
+    <input type="submit" value="Add"/>
+  </form>
+        </div>
+        </body>
+</html>

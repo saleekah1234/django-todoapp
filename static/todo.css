@@ -1,0 +1,36 @@
+body{
+    background-color: black;
+    height: 1000px;
+    width:550px;
+    position: relative;
+    text-align:center;
+
+}
+#container{
+    height: 500px;
+    width:500px;
+    margin-top: 250px;
+    margin-left: 250px;
+    margin-right: 250px;
+    font-style: normal;
+    text-align:center;
+    text-decoration-color: aliceblue;
+
+    
+
+
+}
+#cart{
+    width:500px;
+    text-decoration-color: aliceblue;
+    height:250px;
+}
+#container a{
+    color: aliceblue;
+}
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
